@@ -7,9 +7,13 @@ import {
   CircleAlert,
   CircleCheck,
   ChevronDown,
+  Copy,
   ImagePlus,
   Info,
   LoaderCircle,
+  MessageCircle,
+  MessageSquare,
+  MessagesSquare,
   Phone,
   Send,
   Trash2,
@@ -42,6 +46,7 @@ import {
 import { contact } from "@/config/site";
 import { cn } from "@/lib/cn";
 import { useClientValue } from "@/lib/hooks";
+import { buildBookingMessage, buildMessageLinks } from "@/lib/booking/message";
 import {
   bookingFields,
   emptyBookingValues,
@@ -118,6 +123,9 @@ export function Booking() {
   const [status, setStatus] = useState<Status>("idle");
   const [serverMessage, setServerMessage] = useState("");
   const [backendEnabled, setBackendEnabled] = useState<boolean | null>(null);
+  const [message, setMessage] = useState("");
+  const [copied, setCopied] = useState(false);
+  const messageLinks = useMemo(() => (message ? buildMessageLinks(message) : null), [message]);
   const [dragging, setDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -211,6 +219,27 @@ export function Booking() {
     removeFile();
     setStatus("idle");
     setServerMessage("");
+    setMessage("");
+    setCopied(false);
+  };
+
+  // Slanje preko servera nije aktivirano: pripremamo poruku za WhatsApp / Viber / SMS.
+  // Zahtev NIJE poslat dok klijent sam ne pritisne „Pošalji" u aplikaciji.
+  const prepareMessage = () => {
+    setMessage(buildBookingMessage(values, Boolean(file)));
+    setCopied(false);
+    setStatus("unavailable");
+    window.setTimeout(() => resultRef.current?.scrollIntoView({ block: "center" }), 50);
+  };
+
+  const copyMessage = async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
+    }
   };
 
   const focusFirstError = (found: BookingErrors) => {
@@ -229,6 +258,11 @@ export function Booking() {
     if (Object.keys(found).length > 0) {
       setStatus("idle");
       focusFirstError(found);
+      return;
+    }
+
+    if (backendEnabled === false) {
+      prepareMessage();
       return;
     }
 
@@ -254,8 +288,8 @@ export function Booking() {
         setServerMessage(data.message ?? "");
       } else if (response.status === 503 || data?.code === "not_configured") {
         setBackendEnabled(false);
-        setStatus("unavailable");
-        setServerMessage(data?.message ?? "");
+        prepareMessage();
+        return;
       } else if (data?.errors) {
         setErrors(data.errors);
         setStatus("idle");
@@ -336,9 +370,9 @@ export function Booking() {
               >
                 <TriangleAlert size={18} strokeWidth={1.75} aria-hidden="true" className="mt-0.5 shrink-0 text-amber-400" />
                 <p>
-                  <strong className="font-semibold text-bone">Slanje zahteva trenutno nije aktivirano.</strong> Formular
-                  možeš da popuniš, ali zahtev se neće poslati dok se ne poveže sa email servisom ili bazom.
-                  {(contact.telHref || contact.instagramUrl) && " Za termin nas do tada kontaktiraj direktno."}
+                  <strong className="font-semibold text-bone">Zahtev se šalje porukom.</strong> Popuni formular, a mi
+                  ti pripremimo gotovu poruku za WhatsApp, Viber ili SMS. Zahtev je poslat tek kada u aplikaciji
+                  pritisneš „Pošalji“.
                 </p>
               </div>
             )}
@@ -382,22 +416,56 @@ export function Booking() {
                 >
                   <TriangleAlert size={44} strokeWidth={1.25} aria-hidden="true" className="text-amber-400" />
                   <h3 className="mt-6 font-display text-3xl font-semibold uppercase leading-tight sm:text-4xl">
-                    Zahtev nije poslat.
+                    Poruka je spremna — još nije poslata.
                   </h3>
-                  <p className="mt-4 max-w-md text-bone/70">
-                    Slanje zahteva trenutno nije aktivirano na ovom sajtu, pa tvoji podaci nisu stigli do studija.
-                    {contact.telHref || contact.instagramUrl
-                      ? " Termin možeš da zatražiš direktno:"
-                      : " Pokušaj ponovo kasnije."}
+                  <p className="mt-4 max-w-lg text-bone/70">
+                    {messageLinks
+                      ? "Izaberi aplikaciju i u njoj pritisni „Pošalji“. Tek tada zahtev stiže do studija."
+                      : "Slanje trenutno nije dostupno. Pokušaj ponovo kasnije."}
+                    {file && messageLinks && " Referentnu fotografiju pošalji u istom razgovoru."}
                   </p>
-                  <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+
+                  {messageLinks && (
+                    <>
+                      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                        <Button href={messageLinks.whatsapp} icon={MessageCircle} external>
+                          WhatsApp
+                        </Button>
+                        <Button href={messageLinks.viber} icon={MessagesSquare} variant="outline">
+                          Viber
+                        </Button>
+                        <Button href={messageLinks.sms} icon={MessageSquare} variant="outline">
+                          SMS
+                        </Button>
+                      </div>
+                      <p className="mt-4 max-w-lg text-xs leading-relaxed text-ash">
+                        Viber ne popunjava tekst sam — kopiraj poruku i nalepi je u razgovor.
+                      </p>
+
+                      <div className="mt-6 border border-white/10 bg-white/[0.03] p-4">
+                        <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-ash">
+                          Tekst poruke
+                        </p>
+                        <pre className="max-h-48 overflow-auto whitespace-pre-wrap break-words font-sans text-sm leading-relaxed text-bone/85">
+                          {message}
+                        </pre>
+                      </div>
+                    </>
+                  )}
+
+                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                    {messageLinks && (
+                      <Button variant="ghost" icon={Copy} onClick={copyMessage}>
+                        {copied ? "Kopirano!" : "Kopiraj poruku"}
+                      </Button>
+                    )}
                     {contact.telHref && (
-                      <Button href={contact.telHref} icon={Phone}>
+                      <Button href={contact.telHref} variant="ghost" icon={Phone}>
                         Pozovi
                       </Button>
                     )}
                     {contact.instagramUrl && (
-                      <Button href={contact.instagramUrl} variant="outline" external>
+                      <Button href={contact.instagramUrl} variant="ghost" external>
                         <InstagramIcon size={18} /> Instagram
                       </Button>
                     )}

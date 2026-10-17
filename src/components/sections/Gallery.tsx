@@ -37,7 +37,7 @@ export function Gallery() {
           </Reveal>
           <Reveal delay={0.15} className="max-w-sm">
             <p className="text-base leading-relaxed text-bone/65">
-              Izbor tetovaža iz različitih stilova. Klikni na fotografiju za veći prikaz, ili filtriraj prema stilu.
+              Izbor mojih radova. Klikni na fotografiju za veći prikaz, ili filtriraj prema stilu.
             </p>
           </Reveal>
         </div>

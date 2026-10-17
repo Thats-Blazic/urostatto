@@ -71,7 +71,7 @@ export function Testimonials() {
               <footer className="mt-8 flex items-end justify-between gap-4 border-t border-white/10 pt-6">
                 <div>
                   <p className="font-display text-lg font-medium uppercase tracking-[0.12em]">{item.author}</p>
-                  <p className="text-sm text-ash">{item.detail}</p>
+                  {item.detail && <p className="text-sm text-ash">{item.detail}</p>}
                 </div>
                 {item.placeholder && (
                   <span className="shrink-0 border border-blood/60 px-2 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.25em] text-blood">

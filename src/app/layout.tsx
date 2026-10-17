@@ -69,7 +69,9 @@ const structuredData = {
   description: siteConfig.description,
   url: siteConfig.url,
   ...(contact.phone ? { telephone: contact.phone } : {}),
-  ...(contact.address ? { address: contact.address } : {}),
+  ...(contact.address
+    ? { address: { "@type": "PostalAddress", streetAddress: contact.address, addressCountry: "RS" } }
+    : {}),
   ...(contact.instagramUrl ? { sameAs: [contact.instagramUrl] } : {}),
 };
 

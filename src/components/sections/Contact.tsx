@@ -109,7 +109,8 @@ export function Contact() {
 
             {missingAny && (
               <p className="mt-6 max-w-md text-sm text-ash">
-                Kontakt podaci će uskoro biti objavljeni. Do tada, zahtev za termin možeš poslati putem formulara.
+                Adresa i radno vreme će uskoro biti objavljeni. Do tada nas pozovi, piši na Instagram ili pošalji zahtev
+                putem formulara.
               </p>
             )}
           </Reveal>

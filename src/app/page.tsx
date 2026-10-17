@@ -8,10 +8,12 @@ import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Styles } from "@/components/sections/Styles";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export default function HomePage() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main id="glavni-sadrzaj">
         <Hero />

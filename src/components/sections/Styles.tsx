@@ -7,16 +7,18 @@ import { useSiteState } from "@/components/providers";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { tattooStyles, type TattooStyle } from "@/config/styles";
+import { categoryHasWorks } from "@/config/works";
 import { cn } from "@/lib/cn";
 
 function StyleCard({ style, index }: { style: TattooStyle; index: number }) {
   const { setGalleryFilter, setBookingStyle } = useSiteState();
-  const goesToGallery = style.galleryFilter !== null;
+  // Ako stil još nema radova u galeriji, kartica vodi pravo na zakazivanje sa tim stilom.
+  const goesToGallery = style.galleryFilter !== null && categoryHasWorks(style.galleryFilter);
   const isWide = style.id === "custom";
 
   const handleClick = () => {
-    if (style.galleryFilter) setGalleryFilter(style.galleryFilter);
-    else setBookingStyle("Custom Design");
+    if (goesToGallery && style.galleryFilter) setGalleryFilter(style.galleryFilter);
+    else setBookingStyle(style.bookingStyle);
   };
 
   return (

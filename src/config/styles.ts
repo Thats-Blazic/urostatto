@@ -17,6 +17,8 @@ export interface TattooStyle {
   image: string;
   imageAlt: string;
   galleryFilter: WorkCategory | null;
+  /** Stil koji se unapred bira u formi (mora da postoji u styleOptions). */
+  bookingStyle: string;
   className: string;
 }
 
@@ -28,6 +30,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/stil-blackwork.jpg",
     imageAlt: "Blackwork tetovaža sa crnim geometrijskim šarama",
     galleryFilter: "blackwork",
+    bookingStyle: "Blackwork",
     className: "lg:col-span-7 lg:h-[42rem]",
   },
   {
@@ -37,6 +40,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/rad-oko.jpg",
     imageAlt: "Realistična tetovaža oka",
     galleryFilter: "realizam",
+    bookingStyle: "Realizam",
     className: "lg:col-span-5 lg:mt-24 lg:h-[34rem]",
   },
   {
@@ -46,6 +50,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/stil-fine-line.jpg",
     imageAlt: "Fine line tetovaža sa tankim linijama",
     galleryFilter: "fine-line",
+    bookingStyle: "Fine Line",
     className: "lg:col-span-4 lg:h-[30rem]",
   },
   {
@@ -55,6 +60,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/stil-traditional.jpg",
     imageAlt: "Traditional tetovaža lobanje u boji",
     galleryFilter: "traditional",
+    bookingStyle: "Traditional",
     className: "lg:col-span-4 lg:mt-14 lg:h-[38rem]",
   },
   {
@@ -64,6 +70,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/stil-ornamental.jpg",
     imageAlt: "Ornamentalna tetovaža na grudima",
     galleryFilter: "ornamental",
+    bookingStyle: "Ornamental",
     className: "lg:col-span-4 lg:mt-5 lg:h-[34rem]",
   },
   {
@@ -73,6 +80,7 @@ export const tattooStyles: TattooStyle[] = [
     image: "/images/studio-umetnost.jpg",
     imageAlt: "Umetnička knjiga i skice u studiju",
     galleryFilter: null,
+    bookingStyle: "Custom Design",
     className: "lg:col-span-12 lg:h-[26rem]",
   },
 ];

@@ -41,11 +41,11 @@ export const siteConfig = {
  */
 const contactInput = {
   /** Instagram korisničko ime (npr. "djurdjevic.tattoo") ili pun link do profila. */
-  instagram: clean(process.env.NEXT_PUBLIC_INSTAGRAM) || "",
+  instagram: clean(process.env.NEXT_PUBLIC_INSTAGRAM) || "djurdjevic_tattoo",
   /** Broj telefona u međunarodnom formatu (npr. "+381 60 000 0000"). */
-  phone: clean(process.env.NEXT_PUBLIC_PHONE) || "",
+  phone: clean(process.env.NEXT_PUBLIC_PHONE) || "+381 61 414 6811",
   /** Pun naziv adrese (ulica, broj, grad). Koristi se i za Google Maps navigaciju. */
-  address: clean(process.env.NEXT_PUBLIC_ADDRESS) || "",
+  address: clean(process.env.NEXT_PUBLIC_ADDRESS) || "Obrenovac 11500",
 };
 
 /**
@@ -54,9 +54,7 @@ const contactInput = {
  * Dok su sva polja prazna, prikazuje se poruka da radno vreme uskoro stiže.
  */
 export const workingHours: { days: string; hours: string }[] = [
-  { days: "Ponedeljak – Petak", hours: "" },
-  { days: "Subota", hours: "" },
-  { days: "Nedelja", hours: "" },
+  { days: "Svaki dan", hours: "08:00 – 21:00" },
 ];
 
 const instagramHandle = contactInput.instagram
@@ -66,7 +64,19 @@ const instagramHandle = contactInput.instagram
 
 const phoneDigits = contactInput.phone.replace(/[^\d+]/g, "");
 
+/** Međunarodni broj samo cifre (npr. 381614146811) — za WhatsApp/Viber/SMS linkove. */
+const messagingDigits = (() => {
+  const digits = phoneDigits.replace(/\+/g, "");
+  if (digits.length < 6) return null;
+  if (phoneDigits.startsWith("+")) return digits;
+  if (digits.startsWith("00")) return digits.slice(2);
+  if (digits.startsWith("0")) return `381${digits.slice(1)}`;
+  return digits;
+})();
+
 export const contact = {
+  /** Broj za poruke (samo cifre, bez +), ili null ako telefon nije podešen. */
+  messagingNumber: messagingDigits,
   instagramHandle: instagramHandle || null,
   instagramUrl: instagramHandle ? `https://www.instagram.com/${instagramHandle}/` : null,
   phone: contactInput.phone || null,
@@ -86,5 +96,11 @@ export const navLinks = [
   { label: "Stilovi", id: "stilovi" },
   { label: "Kontakt", id: "kontakt" },
 ] as const;
+
+/** Kredit za dizajn sajta — prikazuje se u footeru. */
+export const designCredit = {
+  name: "Ghost Force Studio",
+  url: "https://www.instagram.com/ghostforcedesign/",
+} as const;
 
 export const bookingCta = { label: "ZAKAŽI TERMIN", id: "zakazivanje" } as const;

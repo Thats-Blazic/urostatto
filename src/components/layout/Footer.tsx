@@ -3,7 +3,7 @@
 import { ArrowUp } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/Logo";
-import { bookingCta, contact, navLinks, siteConfig } from "@/config/site";
+import { bookingCta, contact, designCredit, navLinks, siteConfig } from "@/config/site";
 import { useClientValue } from "@/lib/hooks";
 
 export function Footer() {
@@ -61,9 +61,23 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-[1600px] px-5 py-6 text-xs tracking-wide text-ash sm:px-8 lg:px-12">
-          © {year} {siteConfig.name}. Sva prava zadržana.
-        </p>
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 px-5 py-6 text-xs tracking-wide text-ash sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
+          <p>
+            © {year} {siteConfig.name}. Sva prava zadržana.
+          </p>
+          <p>
+            Designed by{" "}
+            <a
+              href={designCredit.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${designCredit.name} — Instagram (otvara se u novom prozoru)`}
+              className="font-semibold uppercase tracking-[0.18em] text-bone underline decoration-blood decoration-2 underline-offset-4 transition-colors duration-300 hover:text-blood"
+            >
+              {designCredit.name}
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
