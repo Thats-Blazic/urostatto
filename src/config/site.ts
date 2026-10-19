@@ -29,8 +29,8 @@ export const siteConfig = {
     "custom tattoo",
     "zakazivanje tetovaže",
   ],
-  /** Za Open Graph i kanonski link. Postavi pravi domen u NEXT_PUBLIC_SITE_URL pre objave. */
-  url: clean(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000",
+  /** Pravi domen — koristi se za Open Graph, kanonski link, robots i sitemap. Može se pregaziti preko NEXT_PUBLIC_SITE_URL. */
+  url: (clean(process.env.NEXT_PUBLIC_SITE_URL) || "https://www.djurdjevictatto.com").replace(/\/+$/, ""),
 } as const;
 
 /**

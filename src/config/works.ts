@@ -31,6 +31,15 @@ export interface Work {
 
 export const works: Work[] = [
   {
+    id: "mac-i-kanji",
+    title: "Katana & Kanji",
+    category: "blackwork",
+    src: "/images/rad-mac-kanji.jpg",
+    width: 768,
+    height: 1024,
+    alt: "Crno-siva tetovaža mača omotanog dimom i tri kanji znaka na listu noge",
+  },
+  {
     id: "palma",
     title: "Palm",
     category: "blackwork",
