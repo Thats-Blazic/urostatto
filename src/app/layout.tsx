@@ -25,7 +25,7 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-const title = `${siteConfig.name} | Tattoo umetnik — unikatne tetovaže`;
+const title = `${siteConfig.name} | Tattoo Artist`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

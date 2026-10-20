@@ -30,22 +30,3 @@ export function InstagramIcon({ size = 24, strokeWidth = 1.75, ...props }: IconP
     </svg>
   );
 }
-
-/** Monogram „D" — znak studija (isti oblik kao favicon). */
-export function BrandMark({ size = 30, ...props }: IconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 32 32"
-      fill="none"
-      aria-hidden="true"
-      {...props}
-    >
-      <rect x="1" y="1" width="30" height="30" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M9 7h6.5a9 9 0 0 1 0 18H9z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-      <circle cx="25.5" cy="6.5" r="2" fill="var(--color-blood)" />
-    </svg>
-  );
-}
