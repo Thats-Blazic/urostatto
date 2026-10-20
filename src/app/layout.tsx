@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif, Oswald } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { Preloader } from "@/components/ui/Preloader";
 import { contact, siteConfig } from "@/config/site";
 
 // "latin-ext" je obavezan za srpsku latinicu (č, ć, š, ž, đ).
@@ -88,7 +89,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Preskoči na sadržaj
         </a>
-        <Providers>{children}</Providers>
+        {/* Ako je JavaScript isključen, loader se sakriva da ne blokira sajt. */}
+        <noscript>
+          <style>{"#preloader{display:none!important}"}</style>
+        </noscript>
+        <Providers>
+          <Preloader />
+          {children}
+        </Providers>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}

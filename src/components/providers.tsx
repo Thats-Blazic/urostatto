@@ -13,6 +13,9 @@ interface SiteState {
   /** Stil koji se unapred bira u formularu za zakazivanje. */
   bookingStyle: string;
   setBookingStyle: (style: string) => void;
+  /** Postaje true kad se loader počne otvarati — hero tada pušta uvodnu animaciju. */
+  introReady: boolean;
+  setIntroReady: (ready: boolean) => void;
 }
 
 const SiteStateContext = createContext<SiteState | null>(null);
@@ -26,10 +29,11 @@ export function useSiteState(): SiteState {
 export function Providers({ children }: { children: ReactNode }) {
   const [galleryFilter, setGalleryFilter] = useState<GalleryFilter>("all");
   const [bookingStyle, setBookingStyle] = useState("");
+  const [introReady, setIntroReady] = useState(false);
 
   const value = useMemo(
-    () => ({ galleryFilter, setGalleryFilter, bookingStyle, setBookingStyle }),
-    [galleryFilter, bookingStyle],
+    () => ({ galleryFilter, setGalleryFilter, bookingStyle, setBookingStyle, introReady, setIntroReady }),
+    [galleryFilter, bookingStyle, introReady],
   );
 
   return (
