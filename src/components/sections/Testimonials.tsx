@@ -16,7 +16,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <Reveal>
-            <SectionLabel index="05" label="Utisci klijenata" />
+            <SectionLabel index="06" label="Utisci klijenata" />
             <h2
               id="utisci-naslov"
               className="mt-8 font-display text-[clamp(3rem,9vw,8rem)] font-semibold uppercase leading-[0.88] tracking-tight"

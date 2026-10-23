@@ -323,7 +323,7 @@ export function Booking() {
         {/* Levo: naslov i proces */}
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           <Reveal>
-            <SectionLabel index="04" label="Zakazivanje" />
+            <SectionLabel index="05" label="Zakazivanje" />
             <h2
               id="zakazivanje-naslov"
               className="mt-8 font-display text-[clamp(2.8rem,6.4vw,6rem)] font-semibold uppercase leading-[0.92] tracking-tight"

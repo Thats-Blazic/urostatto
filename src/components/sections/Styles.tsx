@@ -90,7 +90,7 @@ export function Styles() {
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-8">
-            <SectionLabel index="03" label="Stilovi tetovaža" />
+            <SectionLabel index="04" label="Stilovi tetovaža" />
             <h2
               id="stilovi-naslov"
               className="mt-8 font-display text-[clamp(3rem,8.5vw,8.5rem)] font-semibold uppercase leading-[0.88] tracking-tight"

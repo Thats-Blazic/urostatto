@@ -84,6 +84,42 @@ export const works: Work[] = [
     height: 1024,
     alt: "Crna kanji tetovaža u tri reda na listu noge",
   },
+  {
+    id: "1111",
+    title: "11:11",
+    category: "fine-line",
+    src: "/images/rad-1111.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Sitna fine line tetovaža broja 11:11 u pisaćem fontu na podlaktici",
+  },
+  {
+    id: "kanji-2",
+    title: "Kanji Script",
+    category: "blackwork",
+    src: "/images/rad-kanji-2.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Krupna crna tetovaža tri kineska znaka jedan ispod drugog na listu noge",
+  },
+  {
+    id: "strelice",
+    title: "Matching Arrows",
+    category: "fine-line",
+    src: "/images/rad-strelice.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Parne sitne tetovaže trouglova i strelica na zadnjoj strani potkolenica dve osobe",
+  },
+  {
+    id: "joker",
+    title: "Joker & Harley",
+    category: "fine-line",
+    src: "/images/rad-joker.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Fine line tetovaža dve igraće karte sa Džokerom i Harli Kvin na butini",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */

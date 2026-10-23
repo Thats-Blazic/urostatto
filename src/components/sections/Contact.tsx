@@ -56,7 +56,7 @@ export function Contact() {
 
       <div className="relative mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
         <Reveal>
-          <SectionLabel index="06" label="Kontakt i lokacija" />
+          <SectionLabel index="07" label="Kontakt i lokacija" />
         </Reveal>
 
         <Reveal delay={0.1}>
