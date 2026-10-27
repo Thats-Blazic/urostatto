@@ -120,6 +120,33 @@ export const works: Work[] = [
     height: 1024,
     alt: "Fine line tetovaža dve igraće karte sa Džokerom i Harli Kvin na butini",
   },
+  {
+    id: "222",
+    title: "222",
+    category: "fine-line",
+    src: "/images/rad-222.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Fine line tetovaža broja 222 u tri reda, jedan ispod drugog, na rebrima",
+  },
+  {
+    id: "slovo-m",
+    title: "Letter M",
+    category: "blackwork",
+    src: "/images/rad-m.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Malo crno serifno slovo M na unutrašnjoj strani zgloba",
+  },
+  {
+    id: "patika",
+    title: "Sneaker Bag",
+    category: "blackwork",
+    src: "/images/rad-tn.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Linijska tetovaža patike u providnoj kesi sa zip-lock zatvaračem na potkolenici",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */
