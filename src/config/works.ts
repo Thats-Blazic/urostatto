@@ -147,6 +147,24 @@ export const works: Work[] = [
     height: 1024,
     alt: "Linijska tetovaža patike u providnoj kesi sa zip-lock zatvaračem na potkolenici",
   },
+  {
+    id: "jarac",
+    title: "Goat 28/12",
+    category: "blackwork",
+    src: "/images/rad-jarac.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Crna tetovaža glave jarca sa velikim rogovima, brojevi 28 iznad i 12 ispod, na butini",
+  },
+  {
+    id: "trio",
+    title: "Cartoon Trio",
+    category: "blackwork",
+    src: "/images/rad-trio.jpg",
+    width: 768,
+    height: 1024,
+    alt: "Tri crtana lika sa Nike šeširima, jedan ispod drugog, linijska tetovaža na listu noge",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */
