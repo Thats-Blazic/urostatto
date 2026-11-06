@@ -165,6 +165,15 @@ export const works: Work[] = [
     height: 1024,
     alt: "Tri crtana lika sa Nike šeširima, jedan ispod drugog, linijska tetovaža na listu noge",
   },
+  {
+    id: "natpis",
+    title: "Only The Strongest",
+    category: "blackwork",
+    src: "/images/rad-natpis.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Crni gotički natpis „Only The Strongest Will Survive“ na donjem delu stomaka",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */
