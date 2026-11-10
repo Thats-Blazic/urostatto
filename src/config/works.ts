@@ -174,6 +174,15 @@ export const works: Work[] = [
     height: 1024,
     alt: "Crni gotički natpis „Only The Strongest Will Survive“ na donjem delu stomaka",
   },
+  {
+    id: "lobanja",
+    title: "Skull (Design)",
+    category: "realizam",
+    src: "/images/rad-lobanja.jpg",
+    width: 576,
+    height: 768,
+    alt: "Realističan crno-beli crtež olovkom: profil lobanje sa ukrašenom krunom, nacrtan za tetovažu",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */
