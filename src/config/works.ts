@@ -183,6 +183,33 @@ export const works: Work[] = [
     height: 768,
     alt: "Realističan crno-beli crtež olovkom: profil lobanje sa ukrašenom krunom, nacrtan za tetovažu",
   },
+  {
+    id: "sundjer",
+    title: "SpongeBob",
+    category: "blackwork",
+    src: "/images/rad-sundjer.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Linijska tetovaža Sunđer Boba koji pokazuje srednji prst, na potkolenici",
+  },
+  {
+    id: "patrik",
+    title: "Patrick",
+    category: "blackwork",
+    src: "/images/rad-patrik.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Linijska tetovaža Patrika koji pokazuje srednji prst, na nozi iznad članka",
+  },
+  {
+    id: "sombrero",
+    title: "Sombrero",
+    category: "fine-line",
+    src: "/images/rad-sombrero.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Sitna fine line tetovaža sombrera sa brkovima na donjem delu stomaka",
+  },
 ];
 
 /** Filteri: „Svi radovi" + samo stilovi koji imaju bar jedan rad. */
